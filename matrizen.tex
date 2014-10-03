@@ -52,3 +52,146 @@ a_{13} & a_{23} & a_{33} & a_{n3} \\
 a_{1n} & a_{2m} & a_{3m} & a_{nm} \\
 \end{bmatrix}
 $  
+\\
+\\
+\\
+\textbf{Multiplikation} \\
+\underline{A}*\underline{B}=$\begin{bmatrix}
+a_{11} & a_{21}  \\
+a_{12} & a_{22}  \\
+\end{bmatrix}$
+*
+$\begin{bmatrix}
+b_{11} & b_{21}  \\
+b_{12} & b_{22}  \\
+\end{bmatrix}$
+=
+$\begin{bmatrix}
+a_{11}*b_{11}+a_{21}*b_{12} & a_{11}*b_{21}+a_{21}*b_{22}  \\
+a_{12}*b_{11}+a_{22}*b_{12} & a_{12}*b_{21}+a_{22}*b_{22}  \\
+\end{bmatrix}$
+\\
+\\
+\textbf{Orthogonal} \\
+Vektor \underline{a} ist zum Vektor \underline{b} orthogonal, wenn das Skalarprodukt \underline{a}$*$\underline{b}$=0$ ist. Dann ist auch \underline{b} orthogonal zu \underline{a} und wir sprechen daher von zwei orthogonalen Vektoren \underline{a} und \underline{b}.\\
+\\
+Zwei orthogonale Nichtnullvektoren sind aufeinander senkrecht ($\cos(\alpha)=0,\alpha=\frac{\pi}{2}$).
+\\
+\\
+\textbf{Determinante}
+\[
+	det(A)=
+	\begin{bmatrix}
+	a & b  \\
+	c & d  \\
+	\end{bmatrix}
+	=a \cdot d - b \cdot c
+\]
+\\
+\section{Rang}
+\subsection{Rang von Vektoren}
+Beschreibt die lineare Abhängigkeit und Unabhängigkeit von Vektoren.
+\\
+Eine Menge von m Vektoren $a_1,a_2,...,a_n$ ( mit derselben Anzahl von Komponenten ) bildet die folgende lineare Kombination:
+\[
+	c_1a_1+c_2a_2+...+c_ma_m
+\]
+Daraus folgt:
+\[
+	c_1a_1+c_2a_2+...+c_ma_m=0
+\]
+Falls die einzige Möglichkeit darin besteht, $c=$ um die Gleichung zu erfüllen, sind die Vektoren \underline{linear unabhängig.}
+\\
+\\
+Zwei Vektoren in der Ebene sind \underline{linear abhängig}, wenn sie parallel sind.
+\[
+	\underline{a}-c*\underline{b}=0=\begin{bmatrix}
+	0  \\
+	0  \\
+	\end{bmatrix}
+\]
+\\
+Drei Vektoren in Anschauungsraum (3D) sind \underline{linear abhängig}, wenn sie in einer Ebene liegen.
+\[
+	c_1\cdot\underline{a}+c_2\cdot\underline{b}+c_3\cdot\underline{c}=0
+\]
+\subsection{Rang einer Matrix}
+Die maximale Zahl der linear unabhängigen Zeilenvektoren einer Matrix \underline{A} heisst Rang.
+Es gilt:
+\[
+	r= Rang(A)\leq m,n
+\]
+\[
+\begin{bmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{21} & a_{22}& a_{23}  \\
+	a_{31} & a_{32} & a_{33}  \\
+	\end{bmatrix}
+\	
+	=Rang
+	\begin{pmatrix}
+		a_{11} & a_{12} & a_{13} \\
+		a_{21} & a_{22}& a_{23}  \\
+		a_{31} & a_{32} & a_{33}  \\
+		\end{pmatrix}
+\]
+\\
+\textbf{Vorgehen (Horizontal)}:\\
+-1. Erste Zeile (oder die mit der tiefsten Zahlen) stehen lassen.\\
+-2. Dieser Schritt für alle Zeilen machen:
+\[
+	c_1\cdot a_{11} + a_{21} = 0\\
+	c\begin{bmatrix} a_{21} & a_{22}& a_{23}  \\  \end{bmatrix} 
+\]
+-3. Entstehen in der Matrix horizontale gleiche Vektoren, so sind diese linear abhängig.
+\\
+\section{Eigenwerte und Eigenvektoren}
+\subsection{Eigenwerte}
+\[
+	A\underline{v} = \lambda \underline{v}
+\]
+Derjenige Wert $\lambda$ für welchen die obige Gleichung eine Lösung $x\neq 0$ hat heisst der Eigenwert der Matrix \underline{A}. 
+\\Die korrespondierende Lösung \underline{x} $\neq 0$ heisst der Eigenvektor der Matrix A.
+\\
+\[
+	A \cdot \underline{x }=\lambda \cdot \underline{x}
+\]
+\[
+		\begin{bmatrix}
+			a & b  \\
+			c & d  \\
+		\end{bmatrix}
+		\cdot	
+		\begin{bmatrix}
+				x_1 \\
+				x_2 \\
+		\end{bmatrix}
+		=
+		\lambda
+		\begin{bmatrix}
+				x_1 \\
+				x_2 \\
+		\end{bmatrix}
+\]
+\\
+Homogenes, lineares Gleichungssystem
+\[
+	(A-\lambda\cdot I) \underline{x} = \underline{0}
+\]
+\\
+\textbf{Lösung nach Cramer: Eigenwert bestimmen}
+\[
+		D(\lambda)=det(A-\lambda I)= 0	\\	\lambda I = \begin{bmatrix}
+			\lambda & 0  \\
+			0 & \lambda  \\
+		\end{bmatrix}
+\]
+\\
+\[
+		\lambda_{1,2}=\frac{-b\pm \sqrt{b^2-4ac}}{2a}	\\	a	\lambda^2+b	\lambda+c=0
+\]
+\\
+Eigenvektor
+\[
+		\underline{v}= A - \lambda \cdot I 
+\]
