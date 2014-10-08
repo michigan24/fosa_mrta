@@ -195,3 +195,20 @@ Eigenvektor
 \[
 		\underline{v}= A - \lambda \cdot I 
 \]
+\\
+\\
+\section{Zustandsvariabel}
+Es gibt allgemeine Untersuchungen über das Systemverhalten, beispielsweise über die Steuerbarkeit und Beobachtbarkeit von Systemen, die sich nur im Zeitbereich durchführen lassen.\\
+Aus diesem Grund ist es angebracht im Zeitbereich zu bleiben. Es ist zweckmässig, die auftretende Differentialgleichung durch Einführen von Zwischengrössen in Systeme von Differentialgleichungen erster Ordnung zu verwandeln.
+\[
+	a_n\cdot y^n+a_{n-1} \cdot y^{n-1}+...+a_2\ddot{y} +a_1\dot{y}+ a_0y=b_0u 
+	\\ a_n\neq 0
+\]
+Dann kann man als Zwischengrössen $x_1,x_2,...,x_n$ die Ausgangsgrösse $y$ und ihre Ableitungen nehmen:
+\[
+	x_1=y,	\\	x_2=\dot{y},	\\ x_3=\ddot{y},...,	\\x_{n-1}=y^{n-2}	\\	x_n=y^{n-1}
+\]
+Aus der Definition folgen die einfachen Differentialgleichungen.:
+\[
+	\dot{x}_1=x_2,	\\	\dot{x}_2=x_3	\\,...,	\\ 	\dot{x}_{n-1}=x_n
+\]
