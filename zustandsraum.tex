@@ -15,200 +15,196 @@
 %GNU General Public License for more details.
 %----------------------------------------
 
-\chapter{Regelung im Zustandsraum}
+\chapter{Zustandsraum}
+\section{Regelungsnormalform der Zustandsgleichung}
+\[
+	G(s)= \frac{b_0+b_1s+b_2s^2+...+b_ns^n}{a_0+a_1s+a_2s^2+...+a_ns^n}
+\]
+\subsection{Regelungsnormalform}
+\[
+	\dot x=
+	\underbrace{
+		\begin{bmatrix}
+			0 &	1 & 0 & .. & 0\\
+			0 & 0 & 1 & .. & 0\\
+			.. & .. & .. &.. & .. \\
+			0 & 0 & 0 & .. & 1\\
+			-\frac{a_0}{a_n} &-\frac{a_1}{a_n} & -\frac{a_2}{a_n} &.. &-\frac{a_{n-1}}{a_n}\\	
+		\end{bmatrix}
+	}_{\textbf{A}}
+	\cdot x +
+	\underbrace{
+		\begin{bmatrix}
+			0 \\
+			0 \\
+			.. \\
+			0 \\
+			\frac{1}{a_n} \\	
+		\end{bmatrix}
+	}_{\textbf{b}}
+	\cdot u	
+\]
 
-\section{Grundlagen von Matrizen}
-\textbf{Matrize} \\
-\\
-$A = 
-\begin{bmatrix}
-a_{11} & a_{12} & a_{13} & a_{1n} \\
-a_{21} & a_{22}& a_{23} & a_{2n} \\
-a_{31} & a_{32} & a_{33} & a_{3n} \\
-a_{m1} & a_{m2} & a_{m3} & a_{mn} \\
-\end{bmatrix}
-$   
-\\
-\\
-A = [Spalten,Zeilen]
-\\
-\\
-\textbf{Transponierte} \\
-\\
-$A = 
-\begin{bmatrix}
-a_{11} & a_{12} & a_{13} & a_{1n} \\
-a_{21} & a_{22}& a_{23} & a_{2n} \\
-a_{31} & a_{32} & a_{33} & a_{3n} \\
-a_{m1} & a_{m2} & a_{m3} & a_{mn} \\
-\end{bmatrix}^T
-$  
-\
-=
-$\begin{bmatrix}
-a_{11} & a_{21} & a_{31} & a_{n1} \\
-a_{12} & a_{22} & a_{32} & a_{n2} \\
-a_{13} & a_{23} & a_{33} & a_{n3} \\
-a_{1n} & a_{2m} & a_{3m} & a_{nm} \\
-\end{bmatrix}
-$  
-\\
-\\
-\\
-\textbf{Multiplikation} \\
-\underline{A}*\underline{B}=$\begin{bmatrix}
-a_{11} & a_{21}  \\
-a_{12} & a_{22}  \\
-\end{bmatrix}$
-*
-$\begin{bmatrix}
-b_{11} & b_{21}  \\
-b_{12} & b_{22}  \\
-\end{bmatrix}$
-=
-$\begin{bmatrix}
-a_{11}*b_{11}+a_{21}*b_{12} & a_{11}*b_{21}+a_{21}*b_{22}  \\
-a_{12}*b_{11}+a_{22}*b_{12} & a_{12}*b_{21}+a_{22}*b_{22}  \\
-\end{bmatrix}$
-\\
-\\
-\textbf{Orthogonal} \\
-Vektor \underline{a} ist zum Vektor \underline{b} orthogonal, wenn das Skalarprodukt \underline{a}$*$\underline{b}$=0$ ist. Dann ist auch \underline{b} orthogonal zu \underline{a} und wir sprechen daher von zwei orthogonalen Vektoren \underline{a} und \underline{b}.\\
-\\
-Zwei orthogonale Nichtnullvektoren sind aufeinander senkrecht ($\cos(\alpha)=0,\alpha=\frac{\pi}{2}$).
-\\
-\\
-\textbf{Determinante}
 \[
-	det(A)=
+	y=
+	\underbrace{
+			\begin{bmatrix}
+				b_0-a_0\frac{b_n}{a_n} & b_1-a_1\frac{b_n}{a_n} & .. & b_{n-1}-a_{n-1}\frac{b_n}{a_n} &\\
+			\end{bmatrix}
+	}_{\textbf{$c^T$}}
+	\cdot x  +
+	\underbrace{
+		\left[ \frac{b_n}{a_n} \right] 
+	}_{\textbf{d}}
+	\cdot u
+\]
+
+\subsection{Beobachtungsnormalform}
+\[
+	\dot x=
+	\underbrace{
+		\begin{bmatrix}
+			0 &	0 & 0 & .. & -\frac{a_0}{a_n}\\
+			1 & 0 & 1 & .. & -\frac{a_1}{a_n}\\
+			0 & 1 & 0 & .. & -\frac{a_2}{a_n}\\
+			.. & .. & .. &.. & .. \\
+			0 & 0 & .. & 1 &-\frac{a_{n-1}}{a_n}\\	
+		\end{bmatrix}
+	}_{\textbf{A}}
+	\cdot x +
+	\underbrace{
+		\begin{bmatrix}
+			b_0-b_n\frac{a_0}{a_n} \\
+			b_1-b_n\frac{a_1}{a_n} \\
+			b_2-b_n\frac{a_2}{a_n}  \\
+			..\\
+			b_{n-1}-b_n\frac{a_{n-1}}{a_n}\\	
+		\end{bmatrix}
+	}_{\textbf{b}}
+	\cdot u	
+\]
+\[
+	y=
+	\underbrace{
+			\begin{bmatrix}
+				0 & 0 & .. & 0 & \frac{1}{a_n}\\
+			\end{bmatrix}
+	}_{\textbf{$c^T$}}
+	\cdot x  +
+	\underbrace{
+		\left[ \frac{b_n}{a_n} \right] 
+	}_{\textbf{d}}
+	\cdot u
+\]
+\subsection{Jordanische Normalform}
+\begin{itemize}
+      \item Bevorzugte Verwendung, wenn Pole vom System bekannt sind
+      \item System ist vollständig entkoppelt, wenn alle Pole reell und einfach vorkommen
+      \item A ist Diagonalmatrix mit $\lambda_i$: Pole
+\end{itemize}
+
+\[
+	\dot x=
+	\underbrace{
+		\begin{bmatrix}
+			\lambda_1 &	0 & 0 & .. & 0\\
+			0 & \lambda_2 & 0 & .. & 0\\
+			0 & 0 & \lambda_2 & .. & 0\\
+			.. & .. & .. &.. & .. \\
+			0 & 0 & 0 & .. & \lambda_n\\	
+		\end{bmatrix}
+	}_{\textbf{A}}
+	\cdot x +
+	\underbrace{
+		\begin{bmatrix}
+			1 \\
+			1 \\
+			.. \\
+			.. \\
+			1\\	
+		\end{bmatrix}
+	}_{\textbf{b}}
+	\cdot u	
+\]
+
+\[
+	y=
+	\underbrace{
+			\begin{bmatrix}
+				r_1 & r_2 & .. & r_n\\
+			\end{bmatrix}
+	}_{\textbf{$c^T$}}
+	\cdot x  +
+	\underbrace{
+		\left[ r_0 \right] 
+	}_{\textbf{d}}
+	\cdot u
+\]
+\section{Steuerbarkeit und Beobachtbarkeit}
+\subsection{Steuerbarkeit}
+Das System heisst steuerbar, wenn sein Zustandspunkt \underline{x} durch geeignete Wahl des Steuervektors u in endlicher Zeit aus einem beliebigen Anfangszustand $x_0$ in den Endzustnad 0 bewegt werden kann (Steuerbar wenn die Vektoren linear unabhängig sind; $Rang(Q_s) = n$)
+\[
+	Q_s = 
 	\begin{bmatrix}
-	a & b  \\
-	c & d  \\
+			b	&	A\cdot b	& .. & A^{n-1} \cdot b\\
 	\end{bmatrix}
-	=a \cdot d - b \cdot c
+	= \left[ n \cdot n\right] 
 \]
+\subsection{Beobachtbarkeit}
+Das System heisst beobachtbar, wenn dem bekannten $u(t)$ aus der Messung $y(t)$ über eine endliche Zeitspanne der Anfangszustand $x(t)$ eindeutig ermittelt werden kann, ganz gleich wo dieser liegt.\\
 \\
-\section{Rang}
-\subsection{Rang von Vektoren}
-Beschreibt die lineare Abhängigkeit und Unabhängigkeit von Vektoren.
-\\
-Eine Menge von m Vektoren $a_1,a_2,...,a_n$ ( mit derselben Anzahl von Komponenten ) bildet die folgende lineare Kombination:
+Das System ist beobachtbar, wenn die Beobachtungsmatrix $Q_B$ regulär ist (nxn Matrix).
 \[
-	c_1a_1+c_2a_2+...+c_ma_m
-\]
-Daraus folgt:
-\[
-	c_1a_1+c_2a_2+...+c_ma_m=0
-\]
-Falls die einzige Möglichkeit darin besteht, $c=$ um die Gleichung zu erfüllen, sind die Vektoren \underline{linear unabhängig.}
-\\
-\\
-Zwei Vektoren in der Ebene sind \underline{linear abhängig}, wenn sie parallel sind.
-\[
-	\underline{a}-c*\underline{b}=0=\begin{bmatrix}
-	0  \\
-	0  \\
+	Q_B=
+	\begin{bmatrix}
+		c^T\\
+		c^T \cdot A\\
+		...\\
+		c^T\cdot A^{n-1}\\
 	\end{bmatrix}
 \]
+\subsection{Transformation in Regelungsnormalform (Steuernormalform)}
+Eine Übertragungssystem $\dot{x}=A\cdot x +  b \cdot u$ wird mit der Transformation $z=T_R\cdot x$ in die Regelungsnormalform  $\dot{x_R}=A_R\cdot x_R +  b_R \cdot u$ überführt.\\
 \\
-Drei Vektoren in Anschauungsraum (3D) sind \underline{linear abhängig}, wenn sie in einer Ebene liegen.
+$q_{s_n}^T$ ist die letzte Zeile von der inversen Steuerbarkeitsmatrix $Q_s^{-1}$.
 \[
-	c_1\cdot\underline{a}+c_2\cdot\underline{b}+c_3\cdot\underline{c}=0
-\]
-\subsection{Rang einer Matrix}
-Die maximale Zahl der linear unabhängigen Zeilenvektoren einer Matrix \underline{A} heisst Rang.
-Es gilt:
-\[
-	r= Rang(A)\leq m,n
+	A_R = T_R\cdot A \cdot T_R^{-1}	\\	b_R = T_R\cdot b	\\	c_R^T = c^T\cdot T_R^{-1}	\\	d_R = d
 \]
 \[
-\begin{bmatrix}
-	a_{11} & a_{12} & a_{13} \\
-	a_{21} & a_{22}& a_{23}  \\
-	a_{31} & a_{32} & a_{33}  \\
+	T_R=
+	\begin{bmatrix}
+		q_{s_n}^T \\
+		q_{s_n}^T \cdot A \\
+		.. \\
+		q_{s_n}^T \cdot A^{n-1}\\	
+	\end{bmatrix}	\\
+	Q_s^{-1} =
+	\begin{bmatrix}
+			.. &	.. & .. & .. & ..\\
+			.. &	.. & .. & .. & ..\\
+			.. &	.. & .. & .. & ..\\
+			 [x &	x & x & x & x]  \\	 
 	\end{bmatrix}
-\	
-	=Rang
-	\begin{pmatrix}
-		a_{11} & a_{12} & a_{13} \\
-		a_{21} & a_{22}& a_{23}  \\
-		a_{31} & a_{32} & a_{33}  \\
-		\end{pmatrix}
 \]
+
+\subsection{Transformation auf Beobachtungsnormalform}
+Eine Übertragungssystem $\dot{x}=A\cdot x +  b \cdot u$ wird mit der Transformation  $z=T_B\cdot x$ in die Beobachtungsnormalform $\dot{x_B}=A_R\cdot x_B +  b_B \cdot u$ überführt.\\
 \\
-\textbf{Vorgehen (Horizontal)}:\\
--1. Erste Zeile (oder die mit der tiefsten Zahlen) stehen lassen.\\
--2. Dieser Schritt für alle Zeilen machen:
-\[
-	c_1\cdot a_{11} + a_{21} = 0\\
-	c\begin{bmatrix} a_{21} & a_{22}& a_{23}  \\  \end{bmatrix} 
-\]
--3. Entstehen in der Matrix horizontale gleiche Vektoren, so sind diese linear abhängig.
-\\
-\section{Eigenwerte und Eigenvektoren}
-\subsection{Eigenwerte}
-\[
-	A\underline{v} = \lambda \underline{v}
-\]
-Derjenige Wert $\lambda$ für welchen die obige Gleichung eine Lösung $x\neq 0$ hat heisst der Eigenwert der Matrix \underline{A}. 
-\\Die korrespondierende Lösung \underline{x} $\neq 0$ heisst der Eigenvektor der Matrix A.
+$q_{B_n}$ ist die letzte Spalte von der inversen Beobachtungsmatrix $Q_B^{-1}$.
 \\
 \[
-	A \cdot \underline{x }=\lambda \cdot \underline{x}
-\]
-\[
-		\begin{bmatrix}
-			a & b  \\
-			c & d  \\
-		\end{bmatrix}
-		\cdot	
-		\begin{bmatrix}
-				x_1 \\
-				x_2 \\
-		\end{bmatrix}
-		=
-		\lambda
-		\begin{bmatrix}
-				x_1 \\
-				x_2 \\
-		\end{bmatrix}
-\]
-\\
-Homogenes, lineares Gleichungssystem
-\[
-	(A-\lambda\cdot I) \underline{x} = \underline{0}
-\]
-\\
-\textbf{Lösung nach Cramer: Eigenwert bestimmen}
-\[
-		D(\lambda)=det(A-\lambda I)= 0	\\	\lambda I = \begin{bmatrix}
-			\lambda & 0  \\
-			0 & \lambda  \\
-		\end{bmatrix}
+	A_B = T_B\cdot A \cdot T_B^{-1}	\\	b_B = T_B\cdot b	\\	c_B^T = c^T\cdot T_B^{-1}	\\	d_B = d
 \]
 \\
 \[
-		\lambda_{1,2}=\frac{-b\pm \sqrt{b^2-4ac}}{2a}	\\	a	\lambda^2+b	\lambda+c=0
-\]
-\\
-Eigenvektor
-\[
-		\underline{v}= A - \lambda \cdot I 
-\]
-\\
-\\
-\section{Zustandsvariabel}
-Es gibt allgemeine Untersuchungen über das Systemverhalten, beispielsweise über die Steuerbarkeit und Beobachtbarkeit von Systemen, die sich nur im Zeitbereich durchführen lassen.\\
-Aus diesem Grund ist es angebracht im Zeitbereich zu bleiben. Es ist zweckmässig, die auftretende Differentialgleichung durch Einführen von Zwischengrössen in Systeme von Differentialgleichungen erster Ordnung zu verwandeln.
-\[
-	a_n\cdot y^n+a_{n-1} \cdot y^{n-1}+...+a_2\ddot{y} +a_1\dot{y}+ a_0y=b_0u 
-	\\ a_n\neq 0
-\]
-Dann kann man als Zwischengrössen $x_1,x_2,...,x_n$ die Ausgangsgrösse $y$ und ihre Ableitungen nehmen:
-\[
-	x_1=y,	\\	x_2=\dot{y},	\\ x_3=\ddot{y},...,	\\x_{n-1}=y^{n-2}	\\	x_n=y^{n-1}
-\]
-Aus der Definition folgen die einfachen Differentialgleichungen.:
-\[
-	\dot{x}_1=x_2,	\\	\dot{x}_2=x_3	\\,...,	\\ 	\dot{x}_{n-1}=x_n
+	T_R=
+	\begin{bmatrix}
+		q_{B_n} & A\cdot q_{B_n} &  ..& A^{n-1}\cdot q_{B_n} & \\
+	\end{bmatrix}	\\
+	Q_B^{-1} =
+	\begin{bmatrix}
+			 .. & .. & x\\
+			 .. & .. & x\\
+			 .. & .. & x\\	 
+	\end{bmatrix}
 \]
