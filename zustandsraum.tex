@@ -163,6 +163,7 @@ Das System ist beobachtbar, wenn die Beobachtungsmatrix $Q_B$ regulär ist (nxn 
 		c^T\cdot A^{n-1}\\
 	\end{bmatrix}
 \]
+\section{Transformation}
 \subsection{Transformation in Regelungsnormalform (Steuernormalform)}
 Eine Übertragungssystem $\dot{x}=A\cdot x +  b \cdot u$ wird mit der Transformation $z=T_R\cdot x$ in die Regelungsnormalform  $\dot{x_R}=A_R\cdot x_R +  b_R \cdot u$ überführt.\\
 \\
@@ -197,7 +198,7 @@ $q_{B_n}$ ist die letzte Spalte von der inversen Beobachtungsmatrix $Q_B^{-1}$.
 \]
 \\
 \[
-	T_R=
+	T_B=
 	\begin{bmatrix}
 		q_{B_n} & A\cdot q_{B_n} &  ..& A^{n-1}\cdot q_{B_n} & \\
 	\end{bmatrix}	\\
@@ -208,3 +209,67 @@ $q_{B_n}$ ist die letzte Spalte von der inversen Beobachtungsmatrix $Q_B^{-1}$.
 			 .. & .. & x\\	 
 	\end{bmatrix}
 \]
+
+\section{Reglersynthese im Zustandsraum}
+\begin{center}
+	\includegraphics[scale = 0.4]{images/zustandsregler.png}
+\end{center}
+\[
+	A_{CL}= A-b\cdot r^T	\\ A_R=T_R\cdot A \cdot T_R^{-1}
+\]
+\[
+	A_{R,CL}= A_R-b_R\cdot r_R^T	\\	r_R^T=
+		\begin{bmatrix}
+				r_{1,R}	&	r_{2,R}	& r_{3,R} &r_{n,R}\\
+		\end{bmatrix}
+\]
+Daraus folgt:
+\[
+		A_{Cl,R}=
+		\begin{bmatrix}
+			0 &	1 & 0 & .. & 0\\
+			0 & 0 & 1 & .. & 0\\
+			.. & .. & .. &.. & .. \\
+			0 & 0 & 0 & .. & 1\\
+				\underbrace{
+					-\frac{a_0}{a_n}-r_{1,R} 
+				}_{\textbf{$-c^{n-1}$}}
+		 &-\frac{a_1}{a_n}-r_{2,R} & -\frac{a_2}{a_n}-r_{3,R} &.. &-\frac{a_{n-1}}{a_n}-r_{n,R}\\	
+		\end{bmatrix}
+\]
+Diese Matrix kann gerade in das Istpolynom überführt werden.
+\\
+Istpolynom:
+\[
+	p_{Cl,r}(s)=s^n+
+	\underbrace{(a_{n-1}+r_{n,R})	}_{\textbf{$c^{n-1}$}}
+	\cdot s^{n-1}+...+(a_{1}+r_{2,R})a_1\cdot s +(a_0+r_{1,r})
+\]
+Das Sollpolynom ist durch die Nullstellen vorgegeben:
+\[
+	p(s)=s^n+p_{n-1}\cdot s^{n-1}+...+p_1\cdot s +p_0
+\]
+Koeffizientenvergleich ergibt nun:
+\[
+	r_{1,R}=p_0-a_0
+\]
+\[
+	r_{2,R}=p_1-a_1
+\]
+\[
+	r_{n,R}=p_{n-1}-a_{n-1}
+\]
+\\
+\\
+Durch die Transformation in RNF der letzten Zeile von $Q_s^{-1}$ (T) lässt sich die Matrix umwandeln.
+\[
+	r^T=r_R^T \cdot T
+\]
+
+
+\subsection{Vorfilter / Vorverstärker}
+Der Vorfilter/Vorverstärker gewährleistet, dass im stationärem Zustand y mit dem gewünschtem, konstantem Vektor w übereinstimmt.
+\[
+	 	v=[c^T(b*r^T-A)^{-1}\cdot b]^{-1}
+\]
+\\
