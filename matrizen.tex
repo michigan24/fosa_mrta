@@ -18,81 +18,181 @@
 \chapter{Matrizen}
 
 \section{Grundlagen}
-\textbf{Matrize} \\
+\subsection*{$m\times n$ Matrize}
+\[
+	A = \left[ a_{jk} \right] =
+	\begin{bmatrix}
+		a_{11} & a_{12} & \ldots & a_{1n} \\
+		a_{21} & a_{22} &  & a_{2n} \\
+		\vdots &  & \ddots & \vdots \\
+		a_{m1} & a_{m2} & \ldots & a_{mn} \\
+	\end{bmatrix}
+\]
 \\
-$A = 
-\begin{bmatrix}
-a_{11} & a_{12} & a_{13} & a_{1n} \\
-a_{21} & a_{22}& a_{23} & a_{2n} \\
-a_{31} & a_{32} & a_{33} & a_{3n} \\
-a_{m1} & a_{m2} & a_{m3} & a_{mn} \\
-\end{bmatrix}
-$   
+m = Zeilen\\
+n = Spalten
+
+\subsection*{Vektoren}
+Zeilenvektor:
+\[
+	\underline{a} = \left[ a_j \right] =
+	\begin{bmatrix}
+		a_1 & a_2 & \ldots & a_m
+	\end{bmatrix}
+\]
 \\
+Spaltenvektor:
+\[
+	\underline{b} = \left[ b_k \right] =
+	\begin{bmatrix}
+		b_1 \\ b_2 \\ \vdots \\ b_m \\
+	\end{bmatrix}
+\]
+\subsection*{Transponierte}
+\[
+	A^T = \left[ a_{kj} \right] =
+		\begin{bmatrix}
+			a_{11} & a_{21} & \ldots & a_{m1} \\
+			a_{12} & a_{22} &  & a_{m2} \\
+			\vdots &  & \ddots & \vdots \\
+			a_{1n} & a_{2n} & \ldots & a_{mn} \\
+		\end{bmatrix}
+\]
 \\
-A = [Spalten,Zeilen]
+$A^T = A$ ist eine symmetrische Matrix\\
+$A^T = -A$ ist eine schief-symmetrische Matrix
+
+\subsection*{Addition}
+Ist nur für Matrizen derselben Dimension $A = [a_{jk}], B=[b_{jk}]$ definiert.
+\[
+	C = A + B = [a_{jk} + b_{jk}]
+\]
+
+\subsection*{Multiplikation}
+\textbf{\textit{Definition:}} Das Produkt $C=A\cdot B$ einer $m \times n$-Matrix $A=[a_{jk}]$ und einer $r \times p$-Matrix $B=[b_{jk}]$ ist nur defniert wenn $r=n$ ist.\\
+\[
+	c_{jk} = \sum_{l=1}^{n} a_{jl} \cdot b_{lk} = a_{j1}b_{1k} + a_{j2}b_{2k} + \ldots + a_{jn}b_{nk}
+\]
 \\
+wobei $j=1,2,\ldots,m$ und $k = 1,2,\ldots,p$.
+\[
+\begin{aligned}
+	C =A \cdot B &= 
+	\begin{bmatrix}
+		a_{11} & a_{12} & \ldots & a_{1n} \\
+		a_{21} & a_{22} &  & a_{2n} \\
+		\vdots &  & \ddots & \vdots \\
+		a_{m1} & a_{m2} & \ldots & a_{mn} \\
+	\end{bmatrix} \cdot
+	\begin{bmatrix}
+		b_{11} & b_{12} & \ldots & b_{1p} \\
+		b_{21} & b_{22} &  & b_{2p} \\
+		\vdots &  & \ddots & \vdots \\
+		b_{n1} & b_{n2} & \ldots & b_{np} \\
+	\end{bmatrix}\\ &= 
+	\begin{bmatrix}
+		a_{11}b_{11} + \ldots + a_{1n}b_{n1} &  \ldots & a_{11}b_{1n} + \ldots + a_{1n}b_{nn} \\
+		a_{21}b_{11} + \ldots + a_{2n}b_{n1} &  & a_{21}b_{1n} + \ldots + a_{2n}b_{nn} \\
+		\vdots & \ddots & \vdots \\
+		a_{m1}b_{11} + \ldots + a_{mn}b_{n1} & \ldots & a_{m1}b_{1n} + \ldots + a_{mn}b_{nn} \\
+	\end{bmatrix}
+\end{aligned}
+\]
 \\
-\textbf{Transponierte} \\
+\textbf{Transponierung eines Produkts:}
+\[
+	\left(A\cdot B\right)^T = B^T \cdot A^T
+\]
+\subsection*{Spezielle Matrizen}
+Eine Quadratische Matrix, deren Elemente oberhalb der Hauptdiagnoale sämtlich Null sind,
+heisst \textbf{untere Dreieckmatrix}.\\
+Wenn die Elemente unterhalb der Hauptdiagonalen sämtlich Null sind, dann heisst sie \textbf{obere Dreieckmatrix}.
+\[
+	T_1 =
+	\begin{bmatrix}
+		t_{11} & 0 		& 0 \\
+		t_{21} & t_{22} & 0 \\
+		t_{31} & t_{32} & t_{33} \\
+	\end{bmatrix} \qquad
+	T_2 =
+	\begin{bmatrix}
+		t_{11} & t_{21} & t_{31} \\
+		0	   & t_{22} & t_{32} \\
+		0	   & 0      & t_{33} \\
+	\end{bmatrix}
+\]
 \\
-$A = 
-\begin{bmatrix}
-a_{11} & a_{12} & a_{13} & a_{1n} \\
-a_{21} & a_{22}& a_{23} & a_{2n} \\
-a_{31} & a_{32} & a_{33} & a_{3n} \\
-a_{m1} & a_{m2} & a_{m3} & a_{mn} \\
-\end{bmatrix}^T
-$  
-\
-=
-$\begin{bmatrix}
-a_{11} & a_{21} & a_{31} & a_{n1} \\
-a_{12} & a_{22} & a_{32} & a_{n2} \\
-a_{13} & a_{23} & a_{33} & a_{n3} \\
-a_{1n} & a_{2m} & a_{3m} & a_{nm} \\
-\end{bmatrix}
-$  
+Ene quadratische Matrix $A=[a_{jk}]$ deren Elemente unter- und oberhalb der Hauptdiagonalen sämtlich null sind, heisst \textbf{Diagonalmatrix}. ($a_{jk} = 0$ für alle $j \neq k$)
+\[
+	D = 
+	\begin{bmatrix}
+		d_{11} & 0      & 0\\
+		0	   & d_{22} & 0 \\
+		0	   & 0      & d_{33} \\
+	\end{bmatrix} \qquad
+	S =
+	\begin{bmatrix}
+		c & 0 & 0\\
+		0 & c & 0 \\
+		0 & 0 & c \\
+	\end{bmatrix}
+\]
 \\
-\\
-\\
-\textbf{Multiplikation} \\
-\underline{A}*\underline{B}=$\begin{bmatrix}
-a_{11} & a_{21}  \\
-a_{12} & a_{22}  \\
-\end{bmatrix}$
-*
-$\begin{bmatrix}
-b_{11} & b_{21}  \\
-b_{12} & b_{22}  \\
-\end{bmatrix}$
-=
-$\begin{bmatrix}
-a_{11}*b_{11}+a_{21}*b_{12} & a_{11}*b_{21}+a_{21}*b_{22}  \\
-a_{12}*b_{11}+a_{22}*b_{12} & a_{12}*b_{21}+a_{22}*b_{22}  \\
-\end{bmatrix}$
-\\
-\\
-\textbf{Orthogonal} \\
-Vektor \underline{a} ist zum Vektor \underline{b} orthogonal, wenn das Skalarprodukt \underline{a}$*$\underline{b}$=0$ ist. Dann ist auch \underline{b} orthogonal zu \underline{a} und wir sprechen daher von zwei orthogonalen Vektoren \underline{a} und \underline{b}.\\
+$S$ ist eine \textbf{Skalarmatrix}, da: $A \cdot S = S \cdot A = cA$\\
+Eine Skalarmatrix, deren Elemente der Hauptdiagonale sämtlich 1 sind, heisst \textbf{Einheitsmatrix}.
+\[
+	I =
+	\begin{bmatrix}
+		1 & 0 & 0\\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+	\end{bmatrix}
+\]
+
+\subsection*{Orthogonal}
+Vektor \underline{a} ist zum Vektor \underline{b} orthogonal, wenn das Skalarprodukt $\underline{a}\bullet\underline{b}=0$ ist. Dann ist auch \underline{b} orthogonal zu \underline{a} und wir sprechen daher von zwei orthogonalen Vektoren \underline{a} und \underline{b}.\\
 \\
 Zwei orthogonale Nichtnullvektoren sind aufeinander senkrecht ($\cos(\alpha)=0,\alpha=\frac{\pi}{2}$).
-\\
-\\
-\textbf{Determinante}
+
+\subsection*{Determinante}
 \[
-	det(A)=
+	D = \det{A}=
 	\begin{bmatrix}
 	a & b  \\
 	c & d  \\
 	\end{bmatrix}
 	=a \cdot d - b \cdot c
 \]
-\\
+\textbf{Wichtige Eigenschaften:}
+\begin{enumerate}
+	\item $\det{A} = \det{A^T}$
+	\item Sind zwei Zeilen oder Spalten linear abhängig, so ist die Determinante = 0
+	\item Vertauscht man zwei Zeilen oder Spalten, so wird die Determinante mit -1 multipliziert
+	\item $\det{AB} = \det{BA} = \det{A} \cdot \det{B}$
+\end{enumerate}
+\textbf{Lineares Gleichungssystem:}
+\[
+	A \cdot \underline{x} = \underline{b}
+\]
+hat die Lösungen: $x_1 = \frac{D_1}{D}$, $x_2 = \frac{D_2}{D}$, wobei $D = \det{A}$ und
+\[
+	D_1 = 
+	\begin{bmatrix}
+		b_1 & a_{12} \\
+		b_2 & a_{22} \\
+	\end{bmatrix} \qquad
+	D_2 = 
+	\begin{bmatrix}
+		a_{11} & b_1 \\
+		a_{21} & b_2 \\
+	\end{bmatrix}
+\]
+
 \section{Rang}
 \subsection{Rang von Vektoren}
 Beschreibt die lineare Abhängigkeit und Unabhängigkeit von Vektoren.
 \\
-Eine Menge von m Vektoren $a_1,a_2,...,a_n$ ( mit derselben Anzahl von Komponenten ) bildet die folgende lineare Kombination:
+Eine Menge von m Vektoren $a_1,a_2,...,a_m$ ( mit derselben Anzahl von Komponenten ) bildet die folgende lineare Kombination:
 \[
 	c_1a_1+c_2a_2+...+c_ma_m
 \]
@@ -100,12 +200,12 @@ Daraus folgt:
 \[
 	c_1a_1+c_2a_2+...+c_ma_m=0
 \]
-Falls die einzige Möglichkeit darin besteht, $c=$ um die Gleichung zu erfüllen, sind die Vektoren \underline{linear unabhängig.}
+Falls die einzige Möglichkeit darin besteht, $c=0$ zu setzten um die Gleichung zu erfüllen, sind die Vektoren \underline{linear unabhängig.}
 \\
 \\
 Zwei Vektoren in der Ebene sind \underline{linear abhängig}, wenn sie parallel sind.
 \[
-	\underline{a}-c*\underline{b}=0=\begin{bmatrix}
+	\underline{a}-c\cdot\underline{b}=0=\begin{bmatrix}
 	0  \\
 	0  \\
 	\end{bmatrix}
@@ -113,50 +213,101 @@ Zwei Vektoren in der Ebene sind \underline{linear abhängig}, wenn sie parallel 
 \\
 Drei Vektoren in Anschauungsraum (3D) sind \underline{linear abhängig}, wenn sie in einer Ebene liegen.
 \[
-	c_1\cdot\underline{a}+c_2\cdot\underline{b}+c_3\cdot\underline{c}=0
+	c_1\cdot\underline{a_1}+c_2\cdot\underline{a_2}+c_3\cdot\underline{a_3}=0
 \]
+
 \subsection{Rang einer Matrix}
 Die maximale Zahl der linear unabhängigen Zeilenvektoren einer Matrix \underline{A} heisst Rang.
 Es gilt:
 \[
 	r= Rang(A)\leq m,n
 \]
+\\
+\textbf{Vorgehen (Horizontal)}:
+\begin{enumerate}
+ \item Erste Zeile (oder die mit der tiefsten Zahlen) stehen lassen.
+ \item Dieser Schritt für alle Zeilen machen:
+ \[
+ 	c_j\cdot a_{11} + a_{j1} = 0 \qquad \rightarrow \qquad
+ 	c_j \cdot \begin{bmatrix} a_{j1} & a_{j2} & \ldots & a_{jn}  \end{bmatrix} 
+ \]
+ \item Entstehen in der Matrix horizontale gleiche Vektoren, so sind diese linear abhängig.
+\end{enumerate}
+
+\section{Adjunkte}
+Ist nur für quadratische Matrizen definiert.
 \[
-\begin{bmatrix}
-	a_{11} & a_{12} & a_{13} \\
-	a_{21} & a_{22}& a_{23}  \\
-	a_{31} & a_{32} & a_{33}  \\
+	adj(A) = Cof(A)^T = \tilde{A}^T =
+	\begin{bmatrix}
+		\tilde{a}_{11} & \tilde{a}_{12} & \ldots & \tilde{a}_{1n}\\
+		\tilde{a}_{21} & \tilde{a}_{22} & 		 & \tilde{a}_{2n}\\
+		\vdots		   &				& \ddots & \vdots \\
+		\tilde{a}_{n1} & \tilde{a}_{n2} & \ldots & \tilde{a}_{nn}\\
+	\end{bmatrix}^T
+\]
+\\
+An der Stelle $(j,k)$ steht der Cofaktor $\tilde{a}_{jk}$, welcher sich folgendermassen berechnet:
+\[
+	\tilde{a}_{jk} = (-1)^{j+k}\cdot M_{jk} = (-1)^{j+k}\cdot \det
+	\begin{bmatrix}
+		a_{1,1} & \ldots & a_{1,k-1} & a_{1,k+1} & \ldots & a_{1,n} \\
+		\vdots  & \ddots & \vdots    & \vdots    & \ddots & \vdots  \\
+		a_{j-1,1} & \ldots & a_{j-1,k-1} & a_{j-1,k+1} & \ldots & a_{j-1,n} \\
+		a_{j+1,1} & \ldots & a_{j+1,k-1} & a_{j+1,k+1} & \ldots & a_{j+1,n} \\
+		\vdots  & \ddots & \vdots    & \vdots    & \ddots & \vdots  \\
+		a_{n,1} & \ldots & a_{n,k-1} & a_{n,k+1} & \ldots & a_{n,n} \\
 	\end{bmatrix}
-\	
-	=Rang
-	\begin{pmatrix}
-		a_{11} & a_{12} & a_{13} \\
-		a_{21} & a_{22}& a_{23}  \\
-		a_{31} & a_{32} & a_{33}  \\
-		\end{pmatrix}
 \]
 \\
-\textbf{Vorgehen (Horizontal)}:\\
--1. Erste Zeile (oder die mit der tiefsten Zahlen) stehen lassen.\\
--2. Dieser Schritt für alle Zeilen machen:
+\textbf{2$\times$2 Matrix}
 \[
-	c_1\cdot a_{11} + a_{21} = 0\\
-	c\begin{bmatrix} a_{21} & a_{22}& a_{23}  \\  \end{bmatrix} 
+	A = 
+	\begin{bmatrix}
+		a & b \\
+		c & d \\
+	\end{bmatrix}
 \]
--3. Entstehen in der Matrix horizontale gleiche Vektoren, so sind diese linear abhängig.
 \\
+Adjunkte:
+\[
+	adj(A) =
+	\begin{bmatrix}
+		d & -c \\
+		-b & a \\
+	\end{bmatrix}^T =
+	\begin{bmatrix}
+		d & -b \\
+		-c & a \\
+	\end{bmatrix}
+\]
+
+\section{Inverse einer Matrix}
+Ist nur für quadratische Matrizen definiert.\\
+Die Inverse einer $n \times n$-Matrix ist gegeben durch:
+\[
+	A^{-1} = \frac{1}{\det{A}} \cdot adj(A) = \frac{1}{\det{A}} \cdot
+	\begin{bmatrix}
+		\tilde{a}_{11} & \tilde{a}_{21} & \ldots & \tilde{a}_{n1}\\
+		\tilde{a}_{12} & \tilde{a}_{22} & 		 & \tilde{a}_{n2}\\
+		\vdots		   &				& \ddots & \vdots \\
+		\tilde{a}_{1n} & \tilde{a}_{2n} & \ldots & \tilde{a}_{nn}\\
+	\end{bmatrix}
+\]
+\\
+Es gilt:
+\[
+	A \cdot A^{-1} = A^{-1} \cdot A = I
+\]
+
 \section{Eigenwerte und Eigenvektoren}
-\subsection{Eigenwerte}
 \[
-	A\underline{v} = \lambda \underline{v}
+	A \cdot \underline{x} = \lambda \cdot \underline{x}
 \]
-Derjenige Wert $\lambda$ für welchen die obige Gleichung eine Lösung $x\neq 0$ hat heisst der Eigenwert der Matrix \underline{A}. 
+Derjenige Wert $\lambda$ für welchen die obige Gleichung eine Lösung $\underline{x}\neq 0$ hat heisst der Eigenwert der Matrix \underline{A}. 
 \\Die korrespondierende Lösung \underline{x} $\neq 0$ heisst der Eigenvektor der Matrix A.
 \\
-\[
-	A \cdot \underline{x }=\lambda \cdot \underline{x}
-\]
-\[
+\[\begin{aligned}
+	A \cdot \underline{x }&=\lambda \cdot \underline{x}\\
 		\begin{bmatrix}
 			a & b  \\
 			c & d  \\
@@ -166,12 +317,13 @@ Derjenige Wert $\lambda$ für welchen die obige Gleichung eine Lösung $x\neq 0$
 				x_1 \\
 				x_2 \\
 		\end{bmatrix}
-		=
+		&=
 		\lambda
 		\begin{bmatrix}
 				x_1 \\
 				x_2 \\
 		\end{bmatrix}
+\end{aligned}
 \]
 \\
 Homogenes, lineares Gleichungssystem
@@ -181,7 +333,7 @@ Homogenes, lineares Gleichungssystem
 \\
 \textbf{Lösung nach Cramer: Eigenwert bestimmen}
 \[
-		D(\lambda)=det(A-\lambda I)= 0	\\	\lambda I = \begin{bmatrix}
+		D(\lambda)=\det(A-\lambda I)= 0	\\	\lambda I = \begin{bmatrix}
 			\lambda & 0  \\
 			0 & \lambda  \\
 		\end{bmatrix}
@@ -193,7 +345,7 @@ Homogenes, lineares Gleichungssystem
 \\
 Eigenvektor
 \[
-		\underline{v}= A - \lambda \cdot I 
+		\underline{x}= A - \lambda \cdot I 
 \]
 \\
 \\
