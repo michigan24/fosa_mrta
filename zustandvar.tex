@@ -30,3 +30,23 @@ Aus der Definition folgen die einfachen Differentialgleichungen.:
 \[
 	\dot{x}_1=x_2,	\\	\dot{x}_2=x_3	\\,...,	\\ 	\dot{x}_{n-1}=x_n
 \]
+
+\subsection{Laplace-Tranformation auf Zustandsgleichung}
+Zustandsdifferentialgleichung:
+\[
+	\dot{x} = A \cdot x + b \cdot u
+\]
+Laplace-Tranformation:
+\[\begin{aligned}
+	sX(s)-x_0 &= A \cdot X(s) + b \cdot U(s) \\
+	X(s) &= (sI-A)^{-1} \cdot b \cdot U(s) + (sI-A)^{-1}x_0
+\end{aligned}\]
+Die inverse Matrix zu $sI-A$ existiert nur wenn $\det\left(sI-A\right) \neq 0$:
+\[
+	\det\left(sI-A\right) =\begin{bmatrix}
+		s-a_{11} & -a_{12} & \ldots & -a_{1n}\\
+		-a_{21}	 & s-a_{22}& \ldots & -a_{2n} \\
+		\vdots	 & 		   & \ddots & \\
+		-a_{n1}	 & -a_{n2} & \ldots & s-a_{nn}\\
+	\end{bmatrix}
+\]
