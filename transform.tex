@@ -1,0 +1,63 @@
+% coding:utf-8
+
+%----------------------------------------
+%FOSAPHY, a LaTeX-Code for a summary of modern control theory
+%Copyright (C) 2015, Mario Felder & Michi Fallegger
+
+%This program is free software; you can redistribute it and/or
+%modify it under the terms of the GNU General Public License
+%as published by the Free Software Foundation; either version 2
+%of the License, or (at your option) any later version.
+
+%This program is distributed in the hope that it will be useful,
+%but WITHOUT ANY WARRANTY; without even the implied warranty of
+%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%GNU General Public License for more details.
+%----------------------------------------
+
+\section{Transformation}
+\subsection{Transformation in Regelungsnormalform (Steuernormalform)}
+Eine Übertragungssystem $\dot{x}=A\cdot x +  b \cdot u$ wird mit der Transformation $z=T_R\cdot x$ in die Regelungsnormalform  $\dot{x_R}=A_R\cdot x_R +  b_R \cdot u$ überführt.\\
+\\
+$q_{s_n}^T$ ist die letzte Zeile von der inversen Steuerbarkeitsmatrix $Q_s^{-1}$.
+\[
+	A_R = T_R\cdot A \cdot T_R^{-1}	\\	b_R = T_R\cdot b	\\	c_R^T = c^T\cdot T_R^{-1}	\\	d_R = d
+\]
+\[
+	T_R=
+	\begin{bmatrix}
+		q_{s_n}^T \\
+		q_{s_n}^T \cdot A \\
+		.. \\
+		q_{s_n}^T \cdot A^{n-1}\\	
+	\end{bmatrix}	\\
+	Q_s^{-1} =
+	\begin{bmatrix}
+			.. &	.. & .. & .. & ..\\
+			.. &	.. & .. & .. & ..\\
+			.. &	.. & .. & .. & ..\\
+			 [x &	x & x & x & x]  \\	 
+	\end{bmatrix}
+\]
+
+\subsection{Transformation auf Beobachtungsnormalform}
+Eine Übertragungssystem $\dot{x}=A\cdot x +  b \cdot u$ wird mit der Transformation  $z=T_B\cdot x$ in die Beobachtungsnormalform $\dot{x_B}=A_R\cdot x_B +  b_B \cdot u$ überführt.\\
+\\
+$q_{B_n}$ ist die letzte Spalte von der inversen Beobachtungsmatrix $Q_B^{-1}$.
+\\
+\[
+	A_B = T_B\cdot A \cdot T_B^{-1}	\\	b_B = T_B\cdot b	\\	c_B^T = c^T\cdot T_B^{-1}	\\	d_B = d
+\]
+\\
+\[
+	T_B=
+	\begin{bmatrix}
+		q_{B_n} & A\cdot q_{B_n} &  ..& A^{n-1}\cdot q_{B_n} & \\
+	\end{bmatrix}	\\
+	Q_B^{-1} =
+	\begin{bmatrix}
+			 .. & .. & x\\
+			 .. & .. & x\\
+			 .. & .. & x\\	 
+	\end{bmatrix}
+\]

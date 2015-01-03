@@ -1,0 +1,113 @@
+% coding:utf-8
+
+%----------------------------------------
+%FOSAPHY, a LaTeX-Code for a summary of modern control theory
+%Copyright (C) 2015, Mario Felder & Michi Fallegger
+
+%This program is free software; you can redistribute it and/or
+%modify it under the terms of the GNU General Public License
+%as published by the Free Software Foundation; either version 2
+%of the License, or (at your option) any later version.
+
+%This program is distributed in the hope that it will be useful,
+%but WITHOUT ANY WARRANTY; without even the implied warranty of
+%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%GNU General Public License for more details.
+%----------------------------------------
+
+\subsection{Jordanische Normalform}
+\begin{itemize}
+      \item Bevorzugte Verwendung, wenn Pole vom System bekannt sind
+      \item System ist vollständig entkoppelt, wenn alle Pole reell und einfach vorkommen
+      \item A ist Diagonalmatrix mit $\lambda_i$: Pole
+\end{itemize}
+Es gilt:
+\[
+	Y(s) = \left( \sum_{i=1}^{n} \frac{r_i}{s-\lambda_i} + r_0 \right) \cdot U(s)
+\]
+Dabei ist $r_0 \neq 0$ wenn Zähler und Nenner von $G(s)$ den gleichen Grad haben.
+\[
+	\dot x=
+	\underbrace{
+		\begin{bmatrix}
+			\lambda_1 &	0 & 0 & \ldots & 0\\
+			0 & \lambda_2 & 0 & \ldots & 0\\
+			0 & 0 & \lambda_2 & \ldots & 0\\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & 0 & \ldots & \lambda_n\\	
+		\end{bmatrix}
+	}_{\textbf{A}}
+	\cdot x +
+	\underbrace{
+		\begin{bmatrix}
+			1 \\
+			1 \\
+			1 \\
+			\vdots \\
+			1\\	
+		\end{bmatrix}
+	}_{\textbf{b}}
+	\cdot u	
+\]
+
+\[
+	y=
+	\underbrace{
+			\begin{bmatrix}
+				r_1 & r_2 & \ldots & r_n\\
+			\end{bmatrix}
+	}_{\textbf{$c^T$}}
+	\cdot x  +
+	\underbrace{
+		\left[ r_0 \right] 
+	}_{\textbf{d}}
+	\cdot u
+\]
+
+\subsubsection{Mehrfachpole}
+Wenn $\lambda_1$ ein $m$-facher Pol ist gilt:
+\[
+	Y(s) = \left( \frac{r_1}{s-\lambda_1} + \ldots + \frac{r_m}{\left(s-\lambda_m\right)^m} + \sum_{i=m+1}^{n} \frac{r_i}{s-\lambda_i} + r_0\right) \cdot U(s)
+\]
+Für die Matrix bedeutet dies:
+\[
+	\dot x=
+	\underbrace{
+		\begin{bmatrix}
+			\lambda_1 &	 		  &  		& 	& & & \\
+			1 		  & \lambda_1 &  		&  	& & &\\
+			 		  & \ddots 	  & \ddots 	& 	& & &\\
+				  	  & 	 	  & 1 		& \lambda_1 & & & \\
+			 	      &  		  &  		&  	& \lambda_{m+1} & &\\	
+			 	      &  		  &  		&  	& 				& \ddots &\\
+			 	      &  		  &  		&  	& 				&  & \lambda_n\\
+		\end{bmatrix}
+	}_{\textbf{A}}
+	\cdot x +
+	\underbrace{
+		\begin{bmatrix}
+			1 \\
+			0 \\
+			\vdots \\
+			0 \\
+			1\\
+			\vdots\\
+			1	
+		\end{bmatrix}
+	}_{\textbf{b}}
+	\cdot u	
+\]
+
+\[
+	y=
+	\underbrace{
+			\begin{bmatrix}
+				r_1 & \ldots & r_m & r_{m+1} & \ldots & r_n\\
+			\end{bmatrix}
+	}_{\textbf{$c^T$}}
+	\cdot x  +
+	\underbrace{
+		\left[ r_0 \right] 
+	}_{\textbf{d}}
+	\cdot u
+\]
