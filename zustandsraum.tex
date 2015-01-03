@@ -16,20 +16,38 @@
 %----------------------------------------
 
 \chapter{Zustandsraum}
+\section{Zustandsvariabel}
+Es gibt allgemeine Untersuchungen über das Systemverhalten, beispielsweise über die Steuerbarkeit und Beobachtbarkeit von Systemen, die sich nur im Zeitbereich durchführen lassen.\\
+Aus diesem Grund ist es angebracht im Zeitbereich zu bleiben. Es ist zweckmässig, die auftretende Differentialgleichung durch Einführen von Zwischengrössen in Systeme von Differentialgleichungen erster Ordnung zu verwandeln.
+\[
+	a_n\cdot y^n+a_{n-1} \cdot y^{n-1}+...+a_2\ddot{y} +a_1\dot{y}+ a_0y=b_0u 
+	\\ a_n\neq 0
+\]
+Dann kann man als Zwischengrössen $x_1,x_2,...,x_n$ die Ausgangsgrösse $y$ und ihre Ableitungen nehmen:
+\[
+	x_1=y,	\\	x_2=\dot{y},	\\ x_3=\ddot{y},...,	\\x_{n-1}=y^{n-2}	\\	x_n=y^{n-1}
+\]
+Aus der Definition folgen die einfachen Differentialgleichungen.:
+\[
+	\dot{x}_1=x_2,	\\	\dot{x}_2=x_3	\\,...,	\\ 	\dot{x}_{n-1}=x_n
+\]
 \section{Regelungsnormalform der Zustandsgleichung}
 \[
-	G(s)= \frac{b_0+b_1s+b_2s^2+...+b_ns^n}{a_0+a_1s+a_2s^2+...+a_ns^n}
+	Y(s) = G(s) \cdot U(s)
+\]
+\[
+	G(s)= \frac{Z(s)}{N(s)} = \frac{b_0+b_1s+b_2s^2+...+b_ns^n}{a_0+a_1s+a_2s^2+...+a_ns^n}
 \]
 \subsection{Regelungsnormalform}
 \[
 	\dot x=
 	\underbrace{
 		\begin{bmatrix}
-			0 &	1 & 0 & .. & 0\\
-			0 & 0 & 1 & .. & 0\\
-			.. & .. & .. &.. & .. \\
-			0 & 0 & 0 & .. & 1\\
-			-\frac{a_0}{a_n} &-\frac{a_1}{a_n} & -\frac{a_2}{a_n} &.. &-\frac{a_{n-1}}{a_n}\\	
+			0 &	1 & 0 & \ldots & 0\\
+			0 & 0 & 1 & \ldots & 0\\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & 0 & \ldots & 1\\
+			-\frac{a_0}{a_n} &-\frac{a_1}{a_n} & -\frac{a_2}{a_n} & \ldots &-\frac{a_{n-1}}{a_n}\\	
 		\end{bmatrix}
 	}_{\textbf{A}}
 	\cdot x +
@@ -37,7 +55,7 @@
 		\begin{bmatrix}
 			0 \\
 			0 \\
-			.. \\
+			\vdots \\
 			0 \\
 			\frac{1}{a_n} \\	
 		\end{bmatrix}
@@ -49,7 +67,7 @@
 	y=
 	\underbrace{
 			\begin{bmatrix}
-				b_0-a_0\frac{b_n}{a_n} & b_1-a_1\frac{b_n}{a_n} & .. & b_{n-1}-a_{n-1}\frac{b_n}{a_n} &\\
+				b_0-a_0\cdot\frac{b_n}{a_n} & b_1-a_1\cdot\frac{b_n}{a_n} & \ldots & b_{n-1}-a_{n-1}\cdot\frac{b_n}{a_n} &\\
 			\end{bmatrix}
 	}_{\textbf{$c^T$}}
 	\cdot x  +
@@ -64,11 +82,11 @@
 	\dot x=
 	\underbrace{
 		\begin{bmatrix}
-			0 &	0 & 0 & .. & -\frac{a_0}{a_n}\\
-			1 & 0 & 0 & .. & -\frac{a_1}{a_n}\\
-			0 & 1 & 0 & .. & -\frac{a_2}{a_n}\\
-			.. & .. & .. &.. & .. \\
-			0 & 0 & .. & 1 &-\frac{a_{n-1}}{a_n}\\	
+			0 &	0 & 0 & \ldots & -\frac{a_0}{a_n}\\
+			1 & 0 & 0 & \ldots & -\frac{a_1}{a_n}\\
+			0 & 1 & 0 & \ldots & -\frac{a_2}{a_n}\\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & \ldots & 1 &-\frac{a_{n-1}}{a_n}\\	
 		\end{bmatrix}
 	}_{\textbf{A}}
 	\cdot x +
@@ -77,7 +95,7 @@
 			b_0-b_n\frac{a_0}{a_n} \\
 			b_1-b_n\frac{a_1}{a_n} \\
 			b_2-b_n\frac{a_2}{a_n}  \\
-			..\\
+			\vdots\\
 			b_{n-1}-b_n\frac{a_{n-1}}{a_n}\\	
 		\end{bmatrix}
 	}_{\textbf{b}}
@@ -87,7 +105,7 @@
 	y=
 	\underbrace{
 			\begin{bmatrix}
-				0 & 0 & .. & 0 & \frac{1}{a_n}\\
+				0 & 0 & \ldots & 0 & \frac{1}{a_n}\\
 			\end{bmatrix}
 	}_{\textbf{$c^T$}}
 	\cdot x  +
@@ -102,16 +120,20 @@
       \item System ist vollständig entkoppelt, wenn alle Pole reell und einfach vorkommen
       \item A ist Diagonalmatrix mit $\lambda_i$: Pole
 \end{itemize}
-
+Es gilt:
+\[
+	Y(s) = \left( \sum_{i=1}^{n} \frac{r_i}{s-\lambda_i} + r_0 \right) \cdot U(s)
+\]
+Dabei ist $r_0 \neq 0$ wenn Zähler und Nenner von $G(s)$ den gleichen Grad haben.
 \[
 	\dot x=
 	\underbrace{
 		\begin{bmatrix}
-			\lambda_1 &	0 & 0 & .. & 0\\
-			0 & \lambda_2 & 0 & .. & 0\\
-			0 & 0 & \lambda_2 & .. & 0\\
-			.. & .. & .. &.. & .. \\
-			0 & 0 & 0 & .. & \lambda_n\\	
+			\lambda_1 &	0 & 0 & \ldots & 0\\
+			0 & \lambda_2 & 0 & \ldots & 0\\
+			0 & 0 & \lambda_2 & \ldots & 0\\
+			\vdots & \vdots & \vdots & \ddots & \vdots \\
+			0 & 0 & 0 & \ldots & \lambda_n\\	
 		\end{bmatrix}
 	}_{\textbf{A}}
 	\cdot x +
@@ -119,8 +141,8 @@
 		\begin{bmatrix}
 			1 \\
 			1 \\
-			.. \\
-			.. \\
+			1 \\
+			\vdots \\
 			1\\	
 		\end{bmatrix}
 	}_{\textbf{b}}
@@ -131,7 +153,7 @@
 	y=
 	\underbrace{
 			\begin{bmatrix}
-				r_1 & r_2 & .. & r_n\\
+				r_1 & r_2 & \ldots & r_n\\
 			\end{bmatrix}
 	}_{\textbf{$c^T$}}
 	\cdot x  +
@@ -140,6 +162,55 @@
 	}_{\textbf{d}}
 	\cdot u
 \]
+
+\subsubsection{Mehrfachpole}
+Wenn $\lambda_1$ ein $m$-facher Pol ist gilt:
+\[
+	Y(s) = \left( \frac{r_1}{s-\lambda_1} + \ldots + \frac{r_m}{\left(s-\lambda_m\right)^m} + \sum_{i=m+1}^{n} \frac{r_i}{s-\lambda_i} + r_0\right) \cdot U(s)
+\]
+Für die Matrix bedeutet dies:
+\[
+	\dot x=
+	\underbrace{
+		\begin{bmatrix}
+			\lambda_1 &	 		  &  		& 	& & & \\
+			1 		  & \lambda_1 &  		&  	& & &\\
+			 		  & \ddots 	  & \ddots 	& 	& & &\\
+				  	  & 	 	  & 1 		& \lambda_1 & & & \\
+			 	      &  		  &  		&  	& \lambda_{m+1} & &\\	
+			 	      &  		  &  		&  	& 				& \ddots &\\
+			 	      &  		  &  		&  	& 				&  & \lambda_n\\
+		\end{bmatrix}
+	}_{\textbf{A}}
+	\cdot x +
+	\underbrace{
+		\begin{bmatrix}
+			1 \\
+			0 \\
+			\vdots \\
+			0 \\
+			1\\
+			\vdots\\
+			1	
+		\end{bmatrix}
+	}_{\textbf{b}}
+	\cdot u	
+\]
+
+\[
+	y=
+	\underbrace{
+			\begin{bmatrix}
+				r_1 & \ldots & r_m & r_{m+1} & \ldots & r_n\\
+			\end{bmatrix}
+	}_{\textbf{$c^T$}}
+	\cdot x  +
+	\underbrace{
+		\left[ r_0 \right] 
+	}_{\textbf{d}}
+	\cdot u
+\]
+
 \section{Steuerbarkeit und Beobachtbarkeit}
 \subsection{Steuerbarkeit}
 Das System heisst steuerbar, wenn sein Zustandspunkt \underline{x} durch geeignete Wahl des Steuervektors u in endlicher Zeit aus einem beliebigen Anfangszustand $x_0$ in den Endzustnad 0 bewegt werden kann (Steuerbar wenn die Vektoren linear unabhängig sind; $Rang(Q_s) = n$ oder $det(Q_s)\neq 0$)
@@ -150,6 +221,7 @@ Das System heisst steuerbar, wenn sein Zustandspunkt \underline{x} durch geeigne
 	\end{bmatrix}
 	= \left[ n \cdot n\right] 
 \]
+
 \subsection{Beobachtbarkeit}
 Das System heisst beobachtbar, wenn dem bekannten $u(t)$ aus der Messung $y(t)$ über eine endliche Zeitspanne der Anfangszustand $x(t)$ eindeutig ermittelt werden kann, ganz gleich wo dieser liegt.\\
 \\
