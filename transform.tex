@@ -17,47 +17,102 @@
 
 \section{Transformation}
 \subsection{Transformation in Regelungsnormalform (Steuernormalform)}
-Eine Übertragungssystem $\dot{x}=A\cdot x +  b \cdot u$ wird mit der Transformation $z=T_R\cdot x$ in die Regelungsnormalform  $\dot{x_R}=A_R\cdot x_R +  b_R \cdot u$ überführt.\\
-\\
-$q_{s_n}^T$ ist die letzte Zeile von der inversen Steuerbarkeitsmatrix $Q_s^{-1}$.
-\[
-	A_R = T_R\cdot A \cdot T_R^{-1}	\\	b_R = T_R\cdot b	\\	c_R^T = c^T\cdot T_R^{-1}	\\	d_R = d
-\]
-\[
-	T_R=
-	\begin{bmatrix}
-		q_{s_n}^T \\
-		q_{s_n}^T \cdot A \\
-		.. \\
-		q_{s_n}^T \cdot A^{n-1}\\	
-	\end{bmatrix}	\\
-	Q_s^{-1} =
-	\begin{bmatrix}
-			.. &	.. & .. & .. & ..\\
-			.. &	.. & .. & .. & ..\\
-			.. &	.. & .. & .. & ..\\
-			 [x &	x & x & x & x]  \\	 
+Ein Übertragungssystem 
+\[ \dot{x}=A\cdot x +  b \cdot u \]
+wird mit der Transformation
+\[ z=T_R\cdot x \]
+in die Regelungsnormalform
+\[ \dot{x}=A_R\cdot x +  b_R \cdot u \]
+überführt. Die Matrizen werden folgendermassen transformiert:
+\[\begin{aligned}
+	A_R &= T_R\cdot A \cdot {T_R}^{-1}	\\
+	b_R &= T_R\cdot b	\\	
+	{c^T}_R &= c^T\cdot {T_R}^{-1}	\\	
+	d_R &= d
+\end{aligned}\]
+Die Transformationsmatrix $T_R$ ($n\times n$) wird wie folgt berechnet:
+\[ \renewcommand\arraystretch{1.3}
+	T_R= \begin{bmatrix}
+		q_{S_n}^T \\
+		q_{S_n}^T \cdot A \\
+		\vdots \\
+		q_{S_n}^T \cdot A^{n-1}	
 	\end{bmatrix}
+\]
+wobei $q_{S_n}^T$ der $n$-te Zeilenvektor der inversen Steuerbarkeitsmatrix ${Q_S}^{-1}$ ist
+\[
+	{Q_S}^{-1} = \begin{bmatrix}
+		q_{S_{11}} & q_{S_{12}} & \ldots & q_{S_{1n}}\\
+		q_{S_{21}} & q_{S_{22}} & \ldots & q_{S_{2n}}\\
+		\vdots		& \vdots	 & \ddots & \vdots\\
+		q_{S_{n1}} & q_{S_{n2}} & \ldots & q_{S_{nn}}\\	 
+	\end{bmatrix} =
+	\begin{bmatrix}
+		q_{S_1} \\
+		q_{S_2} \\
+		\vdots \\
+		q_{S_n} \\
+	\end{bmatrix}	
 \]
 
 \subsection{Transformation auf Beobachtungsnormalform}
-Eine Übertragungssystem $\dot{x}=A\cdot x +  b \cdot u$ wird mit der Transformation  $z=T_B\cdot x$ in die Beobachtungsnormalform $\dot{x_B}=A_R\cdot x_B +  b_B \cdot u$ überführt.\\
-\\
-$q_{B_n}$ ist die letzte Spalte von der inversen Beobachtungsmatrix $Q_B^{-1}$.
-\\
-\[
-	A_B = T_B\cdot A \cdot T_B^{-1}	\\	b_B = T_B\cdot b	\\	c_B^T = c^T\cdot T_B^{-1}	\\	d_B = d
-\]
-\\
+Ein Übertragungssystem 
+\[ \dot{x}=A\cdot x +  b \cdot u \]
+wird mit der Transformation  
+\[ z=T_B\cdot x \]
+in die Beobachtungsnormalform
+\[ \dot{x}=A_B\cdot x +  b_B \cdot u \]
+überführt. Die Matrizen werden folgendermassen transformiert:
+\[\begin{aligned}
+	A_B &= T_B\cdot A \cdot {T_B}^{-1}	\\	
+	b_B &= T_B\cdot b	\\	
+	{c^T}_B &= c^T\cdot {T_B}^{-1}	\\	
+	d_B &= d
+\end{aligned}\]
+Die Transformationsmatrix $T_B$ ($n\times n$) wird wie folgt berechnet:
 \[
 	T_B=
 	\begin{bmatrix}
 		q_{B_n} & A\cdot q_{B_n} &  ..& A^{n-1}\cdot q_{B_n} & \\
 	\end{bmatrix}	\\
-	Q_B^{-1} =
+\]
+wobei $q_{B_n}$ der $n$-te Spaltenvektor der inversen Beobachtungsmatrix ${Q_B}^{-1}$ ist.
+\[
+	{Q_B}^{-1} = \begin{bmatrix}
+	 q_{B_{11}} & q_{B_{12}} & \ldots & q_{B_{1n}}\\
+	 q_{B_{21}} & q_{B_{22}} & \ldots & q_{B_{2n}}\\
+	 \vdots		& \vdots	 & \ddots & \vdots\\
+	 q_{B_{n1}} & q_{B_{n2}} & \ldots & q_{B_{nn}}\\	 
+	\end{bmatrix} =
 	\begin{bmatrix}
-			 .. & .. & x\\
-			 .. & .. & x\\
-			 .. & .. & x\\	 
-	\end{bmatrix}
+		q_{B_1} & q_{B_2} & \ldots & q_{B_n} \\
+	\end{bmatrix}	
+\]
+
+
+\subsection{Tranformation auf Jordansche Normalform}
+Ein Übertragungssystem 
+\[ \dot{x}=A\cdot x +  b \cdot u \]
+wird mit der Transformation  
+\[ x=V\cdot z \]
+in die Jordansche Normalform 
+\[ \dot{x}=A_J\cdot x +  b_J \cdot u \]
+überführt. Die Matrizen werden folgendermassen Transformiert:
+\[\begin{aligned}
+	A_J &= V^{-1}\cdot A \cdot V	\\	
+	b_J &= V^{-1}\cdot b	\\	
+	{c^T}_J &= c^T\cdot V	\\	
+	d_J &= d
+\end{aligned}\]
+Die Transformationsmatrix $V$ ($n\times n$) besteht aus den Eigenvektoren $v_n$ der Matrix $A$:
+\[
+	V = \begin{bmatrix}
+		 v_{11} & v_{12} & \ldots & v_{1n}\\
+		 v_{21} & v_{22} & \ldots & v_{2n}\\
+		 \vdots		& \vdots	 & \ddots & \vdots\\
+		 v_{n1} & v_{n2} & \ldots & v_{nn}\\	 
+		\end{bmatrix} =
+		\begin{bmatrix}
+			v_1 & v_2 & \ldots & v_n \\
+		\end{bmatrix}	
 \]
