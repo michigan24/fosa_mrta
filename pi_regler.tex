@@ -1,0 +1,84 @@
+% coding:utf-8
+
+%----------------------------------------
+%FOSAPHY, a LaTeX-Code for a summary of modern control theory
+%Copyright (C) 2015, Mario Felder & Michi Fallegger
+
+%This program is free software; you can redistribute it and/or
+%modify it under the terms of the GNU General Public License
+%as published by the Free Software Foundation; either version 2
+%of the License, or (at your option) any later version.
+
+%This program is distributed in the hope that it will be useful,
+%but WITHOUT ANY WARRANTY; without even the implied warranty of
+%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%GNU General Public License for more details.
+%----------------------------------------
+
+\section{PI - Zustandsregler}
+Der PI - Zustandsregler kompensiert eine permanente Last(Störung)
+\[
+	\dot x_{PI}
+	=
+	\begin{bmatrix}
+	\dot{x} \\
+	\dot{x_I} \\
+	\end{bmatrix}
+	=
+	\setlength{\tabcolsep}{10pt} % Abstände zwischen den Spalten 
+	\renewcommand*{\arraystretch}{1.3} % Abstände in Tabellen von den Zeilen 
+	\setlength{\dashlinegap}{2pt}
+	\underbrace{\left[\begin{array}{c @{$ ¦ $}c}
+	A & 0  \\ \hdashline
+	c^T & 0   \\
+	\end{array}\right]}_{A_{PI}}
+	\cdot
+	\begin{bmatrix}
+	x \\
+	x_I \\
+	\end{bmatrix}
+	+
+	\underbrace{\begin{bmatrix}
+	b \\
+	0 \\
+	\end{bmatrix}}_{b_{PI}}
+	\cdot
+	u
+\]
+\[
+	y =
+	\underbrace{\left[\begin{array}{c @{$ ¦$} c}
+		c^T & 0
+		\end{array}\right]}_{c^T_{PI}}
+	\cdot
+	\begin{bmatrix}
+	x \\
+	x_I \\
+	\end{bmatrix}
+\]
+
+\begin{description}
+	\item[Entwurfsschritte]~\par
+	\begin{itemize}
+		\item Bildung des erwateten Systems ($ A_{PI}, b_{PI}, c^T_{PI} $)
+		\item Polvorgabe oder LQR für die Berechnung von $ r^T_{PI} $ 
+		\item Der letzte Wert von $r^T_{PI} $ ist $-K_I$
+		\item Vorgabe von Kp experimentell oder gemäss separatem Vorgehen
+		\item $r^T$ kann aus den ersten $n$-Elementen von $r^T_{PI} $ berechnet werden
+		\item Kontrolle der Lage der Eigenwerte
+		\begin{itemize}
+			\item $det(\lambda I_{(n+1)}-(A_{PI}-b_{PI}\cdot r^T_{PI}))=0 $
+			\item $eig(A_{PI}-b_{PI}\cdot r^T_{PI})	$
+		\end{itemize} 	
+	\end{itemize}
+\end{description}
+
+\begin{description}
+	\item [Mögliche Bestimmung von $K_p$]
+	\[
+		K_p=\alpha \cdot [-c^T\cdot A^{-1}\cdot b]^{-1}
+	\]
+	$\alpha $ ist frei wählbar und stellt den Bezug zur Stellgrösse $ u(0) $ bei schrittförmiger Änderung der Eingangsgrösse dar: 
+	\[ u(0)\leqslant \alpha\cdot u(\infty)
+	\]
+\end{description}

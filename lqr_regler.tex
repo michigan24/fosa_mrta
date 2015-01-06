@@ -1,0 +1,57 @@
+% coding:utf-8
+
+%----------------------------------------
+%FOSAPHY, a LaTeX-Code for a summary of modern control theory
+%Copyright (C) 2015, Mario Felder & Michi Fallegger
+
+%This program is free software; you can redistribute it and/or
+%modify it under the terms of the GNU General Public License
+%as published by the Free Software Foundation; either version 2
+%of the License, or (at your option) any later version.
+
+%This program is distributed in the hope that it will be useful,
+%but WITHOUT ANY WARRANTY; without even the implied warranty of
+%MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%GNU General Public License for more details.
+%----------------------------------------
+
+\section{LQ - Regler}
+Der Reglerentwurf kann mittels dem Gütekriterium bestimmt werden. Der Regler wird optimal, wenn die Funktion $ I(r^T) $ minimal wird.
+\[
+I(r^T)=\int {x^T\cdot Q\cdot x+u^T\cdot R \cdot dt}
+\]
+\subsection{Liapanov - Gleichung}
+\[
+S\cdot A_{CL} + A^T_{CL}\cdot S = -Q_r
+\]
+\subsection{Riccati - Gleichung}
+Es gibt genau eine positiv-definite Lösung für $ S $, wenn die Strecke steuerbar ist.
+\[
+-A^T\cdot S-S\cdot A+S\cdot b\cdot R^{-1} \cdot b^T \cdot S-Q=0	
+\]
+\paragraph{$ r^T $ - Regelung}	
+	\begin{itemize}
+		\item $ r=S\cdot b\cdot R^{-1} $
+		\item $ r^T=R^{-1}\cdot b^T\cdot S $
+	\end{itemize}
+
+\paragraph{LQ - Reglerentwurf}
+	\begin{enumerate}
+		\item Vorgabe von Q und R
+		\begin{itemize}
+			\item $ Q=I $ und $ Q=I $
+			\item $ Q=c\cdot c^T $ und $ R= \dfrac{1}{100} $
+		\end{itemize}
+		\item Lösungsmatrix S aus der Riccatigleichung bestimmen
+		\item Regelvektor $ r^T $ berechnen
+		\item Überprüfung der Eigenwerte
+	\end{enumerate}
+
+\begin{description}
+	\item[Vorteile LQ - Regler]~\par
+	\begin{itemize}
+		\item Vorgabe Q, R statt Pole
+		\item Phasenreserve $\varphi_r  \geqslant 60 $\textdegree 
+		\item Amplitudenreserve $ A_r \geqslant 2 $		
+	\end{itemize}
+\end{description}
