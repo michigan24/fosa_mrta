@@ -15,8 +15,30 @@
 %GNU General Public License for more details.
 %----------------------------------------
 
-\input{matrizen} 
-\input{zustandsraum}
-\input{digitale_regelung}
-\input{ti}
-\input{tabelle}
+\chapter{Taschenrechnerbefehle}
+Erzeugen einer Einheitsmatrix:
+\[
+	identity(m)
+\]
+Matrix in eine obere Dreiecksmatrix formen:
+\[
+	ref(A)
+\]
+Matrix in eine Einheitsmatrix formen:
+\[
+	rref(A)
+\]
+Rang einer Matrix bestimmen:
+\[
+	ref(A)
+\]
+Die Anzahl der Zeilen- oder Spaltenvektoren, welche $\neq0$ sind, entspricht dem Rang der Matrix. \\
+\\
+Matrizen zusammenfügen (nur zwei Matrizen auf einmal möglich):
+\[
+	augment(a,b) \\ augment(a;b)
+\]
+Auf gleichen Nenner bringen:
+\[
+	comDenom(...)
+\]
