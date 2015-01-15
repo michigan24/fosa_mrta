@@ -18,16 +18,23 @@
 \section{LQ - Regler}
 Der Reglerentwurf kann mittels dem Gütekriterium bestimmt werden. Der Regler wird optimal, wenn die Funktion $ I(r^T) $ minimal wird.
 \[
-I(r^T)=\int {x^T\cdot Q\cdot x+u^T\cdot R \cdot dt}
+	I(r^T)=\int {x^T\cdot Q\cdot x+u^T\cdot R \cdot dt}
 \]
 \subsection{Liapanov - Gleichung}
 \[
-S\cdot A_{CL} + A^T_{CL}\cdot S = -Q_r
+	S\cdot A_{CL} + A^T_{CL}\cdot S = -Q_r
 \]
 \subsection{Riccati - Gleichung}
-Es gibt genau eine positiv-definite Lösung für $ S $, wenn die Strecke steuerbar ist.
+Es gibt genau eine positiv-definite Lösung für $ S $, wenn die Strecke steuerbar ist. Wobei $ S $ eine symmetrische Matrix ist.
 \[
--A^T\cdot S-S\cdot A+S\cdot b\cdot R^{-1} \cdot b^T \cdot S-Q=0	
+	-A^T\cdot S-S\cdot A+S\cdot b\cdot R^{-1} \cdot b^T \cdot S-Q=0	
+\]
+\[
+	S=
+	\begin{bmatrix}
+	s_1 & s_2  \\ 
+	s_2 & s_3
+	\end{bmatrix} 
 \]
 \paragraph{$ r^T $ - Regelung}	
 	\begin{itemize}

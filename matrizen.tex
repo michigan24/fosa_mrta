@@ -347,7 +347,34 @@ Eigenvektor
 \[
 		\underline{x}= A - \lambda \cdot I 
 \]
-Transitionsmatrix
+\section{Transitionsmatrix}
+Darstellung des zeitlichen Verlaufs der Zustandsvariablen $ x_n $
+\\
+\\
+Laplace - Bereich 
 \[
 	\phi(t)= e^{At} \ \laplace\ (sI-A)^{-1}
+\]
+Jordanische Normalform
+\[
+	A=\begin{bmatrix}
+	\lambda_1 & 0 & 0  \\ 
+	0 & \lambda_2 & 0  \\ 
+	0 & 0 & \lambda_3
+	\end{bmatrix}
+	\Rightarrow
+	e^{At}=\phi(t)=
+	\begin{bmatrix}
+	e^{\lambda_1t} & 0 & 0  \\ 
+	0 & e^{\lambda_2t} & 0  \\ 
+	0 & 0 & e^{\lambda_3t}
+	\end{bmatrix}
+\]
+Zeitlicher Verlauf einer Zustandsvariabel $ x_i $
+\[
+	\dot{x}_i=a_i\cdot x_i+b_i\cdot k_0\cdot u
+\]
+\[
+	x_i(t)=\int \limits_{t_0}^t \! \underbrace{e^{a_i(t-\tau)}\cdot b_i\cdot k_0\cdot u(\tau)  \, d\tau}_{\text{inhomogener Lösungsanteil}}
+	 +\underbrace{e^{a_i(t-t_0)}\cdot x(t_0)}_{\text{homogener Lösungsanteil}}	 
 \]
