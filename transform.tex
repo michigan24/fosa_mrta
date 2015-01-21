@@ -57,14 +57,14 @@ wobei $q_{S_n}^T$ der $n$-te Zeilenvektor der inversen Steuerbarkeitsmatrix ${Q_
 Ein Übertragungssystem 
 \[ \dot{x}=A\cdot x +  b \cdot u \]
 wird mit der Transformation  
-\[ z=T_B\cdot x \]
+\[ z={T_B}^{-1}\cdot x \]
 in die Beobachtungsnormalform
 \[ \dot{x}=A_B\cdot x +  b_B \cdot u \]
 überführt. Die Matrizen werden folgendermassen transformiert:
 \[\begin{aligned}
-	A_B &= T_B^{-1}\cdot A \cdot {T_B}	\\	
-	b_B &= T_B\cdot b	\\	
-	{c^T}_B &= c^T\cdot {T_B}^{-1}	\\	
+	A_B &= {T_B}^{-1}\cdot A \cdot {T_B}	\\	
+	b_B &= {T_B}^{-1}\cdot b	\\	
+	{c^T}_B &= c^T\cdot T_B	\\	
 	d_B &= d
 \end{aligned}\]
 Die Transformationsmatrix $T_B$ ($n\times n$) wird wie folgt berechnet:

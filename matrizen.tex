@@ -350,6 +350,9 @@ Eigenvektor
 \section{Transitionsmatrix}
 Darstellung des zeitlichen Verlaufs der Zustandsvariablen $ x_n $
 \\
+\[
+	x = \e^{At}\cdot x_0
+\]
 \\
 Laplace - Bereich 
 \[
@@ -377,4 +380,8 @@ Zeitlicher Verlauf einer Zustandsvariabel $ x_i $
 \[
 	x_i(t)=\int \limits_{t_0}^t \! \underbrace{e^{a_i(t-\tau)}\cdot b_i\cdot k_0\cdot u(\tau)  \, d\tau}_{\text{inhomogener Lösungsanteil}}
 	 +\underbrace{e^{a_i(t-t_0)}\cdot x(t_0)}_{\text{homogener Lösungsanteil}}	 
+\]
+Potenzreihe von $\e^{At}$:
+\[
+	\e^{Az} = \sum_{v=0}^{\infty}\frac{(Az)^v}{v!}
 \]
