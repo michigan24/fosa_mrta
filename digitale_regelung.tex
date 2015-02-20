@@ -158,7 +158,7 @@ Ein digitales LZI-Glied ist stabil, wenn die Pole seiner z-Übertragungsfunktion
 
 \subsection{Analyse mit der Impulsantwort}
 Das System ist stabil wenn
-\[ \sum_{k=0}^{\infty}|g[k]|<0 \]
+\[ \sum_{k=0}^{\infty}|g[k]|<\infty \]
 
 \section{Zusammenhang Pole Laplace $\leftrightarrow$ z}
 \[\begin{aligned}
@@ -246,7 +246,7 @@ Transformation
 \[\begin{aligned}
 	A_d &= \e^{AT}\\
 	B_d &= \int_{0}^{T}\e^{A\tau}\di\tau B\\
-	C_d &= C
+	C_d &= C\\
 	D_d &= D
 \end{aligned}\]
 
