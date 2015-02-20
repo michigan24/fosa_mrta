@@ -19,9 +19,10 @@
 \[
 	Y(s) = G(s) \cdot U(s)
 \]
-\[
-	G(s)= \frac{Z(s)}{N(s)} = \frac{b_0+b_1s+b_2s^2+...+b_ns^n}{a_0+a_1s+a_2s^2+...+a_ns^n}
-\]
+\[\begin{aligned}
+	G(s) &= \frac{Z(s)}{N(s)} = \frac{b_0+b_1s+b_2s^2+...+b_ns^n}{a_0+a_1s+a_2s^2+...+a_ns^n} \\\\
+	&=\underbrace{c\cdot(sI-A)^{-1}\cdot B +D}_{\text{inhomogener Teil}} + \underbrace{c(sI-A)^{-1}\cdot x_0}_{\text{Anfangswert}}
+\end{aligned}\]
 \subsection{Signalflussbild}
 \begin{center}
 	\includegraphics[scale = 0.5]{images/RNF_Signalflussblid.png}

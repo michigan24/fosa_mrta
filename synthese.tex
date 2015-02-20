@@ -5,7 +5,7 @@
 \subsection{Polvorgabe}
 Bei der Polvorgabe werden die Pole des geschlossen Systems vorgegeben.
 \[
-	A_{CL}= A-b\cdot r^T
+	A_{CL}=F= A-b\cdot r^T
 \]
 \[
 	A_{CL,R}= A_R-b_R\cdot {r^T}_R	\\	{r^T}_R=
@@ -56,9 +56,10 @@ Die Reglermatrix kann auch direkt berechnet werden mit:
 
 \subsection{Vorfilter / Vorverstärker}
 Der Vorfilter/Vorverstärker gewährleistet, dass im stationärem Zustand $y$ mit dem gewünschtem, konstantem Vektor $w$ übereinstimmt.
-\[
-	 	v=[c^T(b\cdot r^T-A)^{-1}\cdot b]^{-1}
-\]
+\[\begin{aligned}
+	 	&v=[c^T(b\cdot r^T-A)^{-1}\cdot b]^{-1} \\
+	 	&v_R=[c^T_R(b_R\cdot r^T_R-A_R)^{-1}\cdot b]^{-1}
+\end{aligned}\]
 \subsection{Beobachter}
 Beobachter ist ein Nachbau des System für den Rechner. Er beinhaltet alle Punkte des realen System. Dafür werden keine Sensoren benötigt. Die Variablen werden geschätzt.\\
 \\
@@ -105,5 +106,5 @@ Aus diesen beiden Gleichungen kann via Koeffizientenvergleich die Matrix $h_B$ b
 	h_{B,1}=p_0-a_0	\\	h_{B,2}=p1-a1	\\	etc.	
 \]
 \[
-	h_B=p-a
+	h_B=p-a \\ h=T_B\cdot h_B \\
 \]

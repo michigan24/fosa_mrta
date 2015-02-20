@@ -15,30 +15,30 @@
 %GNU General Public License for more details.
 %----------------------------------------
 
-\documentclass[a5paper,10pt,fleqn]{book}
-
-\usepackage{fosamrta_layout}
-
-%\setboolean{ti}{true}        % Anleitung für TI-89
-
-\title{Formelsammlung MRT $+$ A}
-% \ifti
-% \title{Formelsammlung MRT&A \\ Mit Anleitung zu TI-89}
-% \fi
-
-
-\author{Michi Fallegger\\Mario Felder\\Simon Kurmann}
-\date{\today}
-
-%\catcode `\*=\active
-%\def *{\cdot}
-
-\begin{document}
-
-\maketitle
-
-\tableofcontents
-\include{content}
-
-\end{document}
-
+\chapter{Taschenrechnerbefehle}
+Erzeugen einer Einheitsmatrix:
+\[
+	identity(m)
+\]
+Matrix in eine obere Dreiecksmatrix formen:
+\[
+	ref(A)
+\]
+Matrix in eine Einheitsmatrix formen:
+\[
+	rref(A)
+\]
+Rang einer Matrix bestimmen:
+\[
+	ref(A)
+\]
+Die Anzahl der Zeilen- oder Spaltenvektoren, welche $\neq0$ sind, entspricht dem Rang der Matrix. \\
+\\
+Matrizen zusammenfügen (nur zwei Matrizen auf einmal möglich):
+\[
+	augment(a,b) \\ augment(a;b)
+\]
+Auf gleichen Nenner bringen:
+\[
+	comDenom(...)
+\]

@@ -46,12 +46,10 @@ wobei $q_{S_n}^T$ der $n$-te Zeilenvektor der inversen Steuerbarkeitsmatrix ${Q_
 		q_{S_{21}} & q_{S_{22}} & \ldots & q_{S_{2n}}\\
 		\vdots		& \vdots	 & \ddots & \vdots\\
 		q_{S_{n1}} & q_{S_{n2}} & \ldots & q_{S_{nn}}\\	 
-	\end{bmatrix} =
+	\end{bmatrix} \Rightarrow
+	q_{S_n}^T=
 	\begin{bmatrix}
-		q_{S_1} \\
-		q_{S_2} \\
-		\vdots \\
-		q_{S_n} \\
+		q_{S_{n1}} & q_{S_{n2}} & \ldots &	q_{S_{nn}}
 	\end{bmatrix}	
 \]
 
@@ -59,14 +57,14 @@ wobei $q_{S_n}^T$ der $n$-te Zeilenvektor der inversen Steuerbarkeitsmatrix ${Q_
 Ein Übertragungssystem 
 \[ \dot{x}=A\cdot x +  b \cdot u \]
 wird mit der Transformation  
-\[ z=T_B\cdot x \]
+\[ z={T_B}^{-1}\cdot x \]
 in die Beobachtungsnormalform
 \[ \dot{x}=A_B\cdot x +  b_B \cdot u \]
 überführt. Die Matrizen werden folgendermassen transformiert:
 \[\begin{aligned}
-	A_B &= T_B\cdot A \cdot {T_B}^{-1}	\\	
-	b_B &= T_B\cdot b	\\	
-	{c^T}_B &= c^T\cdot {T_B}^{-1}	\\	
+	A_B &= {T_B}^{-1}\cdot A \cdot {T_B}	\\	
+	b_B &= {T_B}^{-1}\cdot b	\\	
+	{c^T}_B &= c^T\cdot T_B	\\	
 	d_B &= d
 \end{aligned}\]
 Die Transformationsmatrix $T_B$ ($n\times n$) wird wie folgt berechnet:
@@ -83,9 +81,13 @@ wobei $q_{B_n}$ der $n$-te Spaltenvektor der inversen Beobachtungsmatrix ${Q_B}^
 	 q_{B_{21}} & q_{B_{22}} & \ldots & q_{B_{2n}}\\
 	 \vdots		& \vdots	 & \ddots & \vdots\\
 	 q_{B_{n1}} & q_{B_{n2}} & \ldots & q_{B_{nn}}\\	 
-	\end{bmatrix} =
+	\end{bmatrix} \Rightarrow
+	q_{B_n}=
 	\begin{bmatrix}
-		q_{B_1} & q_{B_2} & \ldots & q_{B_n} \\
+		q_{B_{1n}} \\
+		q_{B_{2n}} \\
+		\vdots \\
+		q_{B_{nn}} \\
 	\end{bmatrix}	
 \]
 
